@@ -35,15 +35,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-         imageView = (ImageView)findViewById(R.id.image_iv);
-         origin_tv = (TextView) findViewById(R.id.origin_tv);
-         origin_label = (TextView) findViewById(R.id.origin_label);
-         also_known_tv = (TextView) findViewById(R.id.also_known_tv);
-         also_known_label = (TextView)findViewById(R.id.also_known_label);
-         ingredients_tv = (TextView) findViewById(R.id.ingredients_tv);
-         ingredients_label = (TextView) findViewById(R.id.ingredients_label);
-         description_tv = (TextView) findViewById(R.id.description_tv);
-         description_label = (TextView) findViewById(R.id.description_label);
+        imageView = (ImageView)findViewById(R.id.image_iv);
+
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -80,6 +73,14 @@ public class DetailActivity extends AppCompatActivity {
         Picasso.with(this)
                 .load(sandwich.getImage())
                 .into(imageView);
+        origin_tv = (TextView) findViewById(R.id.origin_tv);
+        origin_label = (TextView) findViewById(R.id.origin_label);
+        also_known_tv = (TextView) findViewById(R.id.also_known_tv);
+        also_known_label = (TextView)findViewById(R.id.also_known_label);
+        ingredients_tv = (TextView) findViewById(R.id.ingredients_tv);
+        ingredients_label = (TextView) findViewById(R.id.ingredients_label);
+        description_tv = (TextView) findViewById(R.id.description_tv);
+        description_label = (TextView) findViewById(R.id.description_label);
 
         String originText = sandwich.getPlaceOfOrigin();
         if(originText.isEmpty()){
@@ -91,8 +92,8 @@ public class DetailActivity extends AppCompatActivity {
 
         List<String> alsoKnownAs = sandwich.getAlsoKnownAs();
         if(alsoKnownAs.size() == 0){
-            also_known_tv.setVisibility(View.GONE);
-            also_known_label.setVisibility(View.GONE);
+            also_known_tv.setText("No other names found!");
+            //also_known_label.setVisibility(View.GONE);
         } else {
             //display
             also_known_tv.setVisibility(View.VISIBLE);
