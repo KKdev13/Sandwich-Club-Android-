@@ -26,12 +26,12 @@ public class JsonUtils {
             JSONObject name = main.getJSONObject("name");
             fullName = name.getString("mainName");
 
-            JSONArray akaJA = name.getJSONArray("alsoKnownAs");
+            JSONArray AKAJsonArray = name.getJSONArray("alsoKnownAs");
             aka = new ArrayList<>();
 
-            if (akaJA.length() != 0){
-                for(int i = 0; i < akaJA.length(); i++){
-                    aka.add(akaJA.getString(i));
+            if (AKAJsonArray.length() != 0){
+                for(int i = 0; i < AKAJsonArray.length(); i++){
+                    aka.add(AKAJsonArray.getString(i));
                 }
             }
 
@@ -49,6 +49,7 @@ public class JsonUtils {
             }
         } catch (JSONException e){
             e.printStackTrace();
+            return null;
         }
 
         Sandwich sandwich = new Sandwich(fullName, aka, origin, desc, image, ing);
